@@ -51,25 +51,30 @@ Promover alguém manualmente pelo SQL Editor, se necessário:
 update public.estudos_profiles set role = 'admin', status = 'approved' where email = 'fulano@exemplo.com';
 ```
 
-## 4. Publicar e instalar no celular
+## 4. Publicar no GitHub Pages e instalar no celular
 
-A instalação como app exige **HTTPS**, então publique o build (Vercel, Netlify, Cloudflare Pages…):
+A instalação como app exige **HTTPS**; o GitHub Pages já entrega. O deploy é automático por
+[`.github/workflows/deploy.yml`](.github/workflows/deploy.yml) a cada push na `main`.
 
-```bash
-pnpm build                # gera dist/
-```
+1. Crie um repositório no GitHub (pode ser privado no plano Pro; no gratuito o Pages exige repositório público)
+   e envie o código (o `.env` não sobe, está no `.gitignore`).
+2. No repositório: **Settings → Secrets and variables → Actions → New repository secret**, crie:
+   `VITE_SUPABASE_URL` e `VITE_SUPABASE_ANON_KEY`.
+3. **Settings → Pages → Build and deployment → Source: GitHub Actions**.
+4. Faça um push na `main` (ou **Actions → Deploy → Run workflow**). O endereço final será
+   `https://SEU-USUARIO.github.io/NOME-DO-REPO/`.
+5. No Supabase, em **Authentication → URL Configuration**, ponha esse endereço em _Site URL_.
 
-- Build command: `pnpm build` · Output directory: `dist`
-- Configure as variáveis `VITE_SUPABASE_URL` e `VITE_SUPABASE_ANON_KEY` no painel do provedor.
-- Em **Supabase → Authentication → URL Configuration**, ponha a URL publicada em _Site URL_.
+Se o repositório se chamar `SEU-USUARIO.github.io`, o site fica na raiz: troque `BASE` no workflow por `/`.
 
 Depois, abra o endereço no celular:
 
 - **Android (Chrome):** menu ⋮ → _Instalar app_ / _Adicionar à tela inicial_.
 - **iPhone (Safari):** botão Compartilhar → _Adicionar à Tela de Início_.
 
-O app abre em tela cheia com ícone próprio. O app em si carrega offline, mas os dados
-dependem de conexão com o Supabase.
+O app em si carrega offline, mas os dados dependem de conexão com o Supabase.
+
+Para gerar o build manualmente em outro subcaminho: `pnpm build --base=/nome/`.
 
 ## Scripts
 

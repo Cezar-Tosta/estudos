@@ -44,7 +44,7 @@ export function Shell() {
     <div className="shell">
       <header className="topbar">
         <span className="brand">
-          <img src="/favicon.svg" alt="" width={26} height={26} />
+          <img src={`${import.meta.env.BASE_URL}favicon.svg`} alt="" width={26} height={26} />
           Estudos
         </span>
         <span className="topbar-user">

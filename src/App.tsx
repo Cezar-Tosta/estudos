@@ -9,7 +9,7 @@ function Splash({ children }: { children?: React.ReactNode }) {
   return (
     <main className="auth">
       <div className="auth-card center">
-        <img src="/favicon.svg" alt="" width={56} height={56} />
+        <img src={`${import.meta.env.BASE_URL}favicon.svg`} alt="" width={56} height={56} />
         {children ?? <p className="muted">Carregando…</p>}
       </div>
     </main>

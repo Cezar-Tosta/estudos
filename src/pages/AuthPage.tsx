@@ -50,7 +50,13 @@ export function AuthPage() {
   return (
     <main className="auth">
       <div className="auth-card card">
-        <img className="auth-logo" src="/favicon.svg" alt="" width={64} height={64} />
+        <img
+          className="auth-logo"
+          src={`${import.meta.env.BASE_URL}favicon.svg`}
+          alt=""
+          width={64}
+          height={64}
+        />
         <h1>Estudos</h1>
         <p className="muted center">Matérias, prazos e o que estudar hoje.</p>
 

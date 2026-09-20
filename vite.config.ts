@@ -13,8 +13,6 @@ export default defineConfig({
         short_name: "Estudos",
         description: "Gerencie matérias, prazos e o que estudar em cada dia.",
         lang: "pt-BR",
-        start_url: "/",
-        scope: "/",
         display: "standalone",
         orientation: "portrait",
         background_color: "#f5f6fb",
@@ -27,7 +25,7 @@ export default defineConfig({
         ],
       },
       workbox: {
-        navigateFallback: "/index.html",
+        navigateFallback: "index.html",
         globPatterns: ["**/*.{js,css,html,svg,png,woff2}"],
       },
     }),
