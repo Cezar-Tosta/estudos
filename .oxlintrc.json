@@ -1,0 +1,10 @@
+{
+  "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "plugins": ["typescript", "import", "unicorn", "react"],
+  "categories": { "correctness": "error" },
+  "rules": {
+    // Falso positivo: buscar dados ao montar (setState só ocorre após o await).
+    "react/set-state-in-effect": "off"
+  },
+  "ignorePatterns": ["dist", "dev-dist", "node_modules"]
+}
